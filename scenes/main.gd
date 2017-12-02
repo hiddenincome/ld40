@@ -63,7 +63,13 @@ func place_cursor():
 
 func create_random_tile():
 	randomize()
-	return tile_class[randi()%7].instance()	
+	return tile_class[randi()%7].instance()
+	
+func get_play_area_tile(pos):
+	for tile in play_area_tiles.get_children():
+		if tile.get_pos() == pos:
+			return tile
+	return null
 
 func _on_new_tile_timer_timeout():
 	var number_of_tiles_in_queue = queue_tiles.get_child_count()
@@ -85,6 +91,12 @@ func move_tile_from_queue_to_board():
 	if number_of_tiles_in_queue > 0:
 		var tile = queue_tiles.get_child(0)
 		queue_tiles.remove_child(tile)
+		
+		var tile_already_in_place = get_play_area_tile(cursor.get_pos())
+		if tile_already_in_place != null:
+			print('remove tile already in place')
+			play_area_tiles.remove_child(tile_already_in_place)
+		
 		play_area_tiles.add_child(tile)
 		tile.set_pos(cursor.get_pos())
 	
