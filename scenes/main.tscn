@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
 [ext_resource path="res://assets/play-background.png" type="Texture" id=2]
-[ext_resource path="res://assets/cursor.png" type="Texture" id=3]
-[ext_resource path="res://scenes/tile_h.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/tile_h.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/cursor.png" type="Texture" id=4]
 [ext_resource path="res://assets/queue-background.png" type="Texture" id=5]
 
 [node name="main" type="Node2D"]
@@ -17,21 +17,21 @@ transform/scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="cursor" type="Sprite" parent="play_area"]
-
-transform/pos = Vector2( 21.151, 17.5108 )
-texture = ExtResource( 3 )
-centered = false
-
 [node name="tiles" type="Node2D" parent="play_area"]
 
-[node name="sprite" parent="play_area/tiles" instance=ExtResource( 4 )]
+[node name="sprite" parent="play_area/tiles" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 4, 5 )
 
-[node name="sprite1" parent="play_area/tiles" instance=ExtResource( 4 )]
+[node name="sprite1" parent="play_area/tiles" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 19, 5 )
+
+[node name="cursor" type="Sprite" parent="play_area"]
+
+transform/pos = Vector2( 21.151, 17.5108 )
+texture = ExtResource( 4 )
+centered = false
 
 [node name="queue" type="Sprite" parent="."]
 
