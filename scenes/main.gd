@@ -1,15 +1,16 @@
 extends Node2D
 
-var play_area_top_left = Vector2(280, 100)
 var cursor_pos = Vector2(5, 3)
 var cursor_top_left = Vector2(0, 0)
 var cursor_bottom_right = Vector2(10, 6)
+var player_area_border = Vector2(4, 4)
+var tile_size = 15
 
 onready var play_area = get_node('play_area')
 onready var cursor = get_node('play_area/cursor')
+onready var queue = get_node('queue')
 
 func _ready():
-	play_area.set_pos(play_area_top_left)
 	place_cursor()
 	set_process_input(true)
 
@@ -33,4 +34,4 @@ func _input(event):
 		place_cursor()
 
 func place_cursor():
-	cursor.set_pos(Vector2(4, 4) + cursor_pos * 15)
+	cursor.set_pos(player_area_border + cursor_pos * tile_size)
